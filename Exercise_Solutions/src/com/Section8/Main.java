@@ -9,10 +9,16 @@ public class Main {
 
     public static void main(String[] args) {
         //testSortArrays(5);
-        testFindMininum(5);
+        //testFindMininum(5);
+        testReverseArray(new int[]{1,2,3,4,5,6});
     }
 
-    private static void testFindMininum(int count) {
+    private static void testReverseArray(int[] array) {
+
+        ReverseArray.reverse(array);
+    }
+
+        private static void testFindMininum(int count) {
 
         int min= FindMinimum.findMin(FindMinimum.readIntegers(count));
         System.out.println("Find Minimum: "+min);

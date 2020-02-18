@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class SortingAlgorithms {
 
-
+    private static void printArray(String text,int[] array){
+        System.out.println(text);
+        for(int i=0;i<array.length;i++){
+            System.out.println(array[i]);
+        }
+    }
 
     //bubble sort --> the simplest sorting algorithm
     public static int[] bubbleSortArray(int arraySize, int[] inputArray){
         // Has O(n^2) but is worse than insertion sort
         System.out.println("Sorting using bubble sort algorithm");
-        System.out.println("UnSorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("UnSorted array is:", inputArray);
         boolean done = true;
         while(done){
             done=false;
@@ -28,10 +30,7 @@ public class SortingAlgorithms {
             }
 
         }
-        System.out.println("Sorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("Sorted array is:", inputArray);
         return inputArray;
 
     }
@@ -44,11 +43,7 @@ public class SortingAlgorithms {
         // plus: does not use extra storage
         //https://www.youtube.com/watch?v=i-SKeOcBwko
         System.out.println("Sorting using insert sort algorithm");
-        System.out.println("UnSorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
-
+        printArray("UnSorted array is:", inputArray);
         for(int i=1;i<arraySize;i++){
             int value=inputArray[i];
             int hole=i;
@@ -59,10 +54,7 @@ public class SortingAlgorithms {
             }
             inputArray[hole]=value;
         }
-        System.out.println("Sorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("Sorted array is:", inputArray);
         return inputArray;
     }
 
@@ -73,10 +65,7 @@ public class SortingAlgorithms {
         // performs more comparisons (watch out for long comparisons) and less swaps
         // plus: does not use extra storage
         System.out.println("Sorting using selection sort algorithm");
-        System.out.println("UnSorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("UnSorted array is:", inputArray);
 
         //Find Min Value
         int min_index=0;
@@ -95,10 +84,7 @@ public class SortingAlgorithms {
             }
         }
 
-        System.out.println("Sorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("Sorted array is:", inputArray);
         return inputArray;
     }
 
@@ -112,16 +98,10 @@ public class SortingAlgorithms {
         // minus: uses extra storage
         // blatant copy from: https://codereview.stackexchange.com/questions/122697/simple-java-mergesort-implementation
         System.out.println("Sorting using merge sort algorithm");
-        System.out.println("UnSorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("UnSorted array is:", inputArray);
         inputArray= mergeSort(inputArray);
 
-        System.out.println("Sorted array is:");
-        for(int i=0;i<arraySize;i++){
-            System.out.println(inputArray[i]);
-        }
+        printArray("Sorted array is:", inputArray);
         return inputArray;
     }
 
