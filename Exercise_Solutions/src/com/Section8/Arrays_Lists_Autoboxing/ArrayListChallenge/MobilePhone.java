@@ -1,6 +1,5 @@
-package com.Section8.Arrays_Lists_Autoboxing;
+package com.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MobilePhone {

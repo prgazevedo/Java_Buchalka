@@ -1,5 +1,8 @@
 package com.Section8.Arrays_Lists_Autoboxing;
 
+import com.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge.MobilePhone;
+import com.Section8.Arrays_Lists_Autoboxing.AutoboxingChallenge.Bank;
+
 import java.util.Scanner;
 
 public class Main {
@@ -19,6 +22,12 @@ public class Main {
 
     }
 
+
+    private static void testBank(){
+        Bank bank = new Bank();
+        bank.runBank();
+
+    }
 
     private static void testReverseArray(int[] array) {
 

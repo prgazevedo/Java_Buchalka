@@ -1,8 +1,8 @@
-package com.Section8.Arrays_Lists_Autoboxing;
+package com.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge;
 
 import java.util.ArrayList;
 
-import static com.Section8.Arrays_Lists_Autoboxing.MobilePhone.queryUserForContact;
+import static com.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge.MobilePhone.queryUserForContact;
 
 public class ContactManager {
 

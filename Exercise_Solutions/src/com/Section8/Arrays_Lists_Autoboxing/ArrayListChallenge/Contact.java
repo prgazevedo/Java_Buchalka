@@ -1,4 +1,4 @@
-package com.Section8.Arrays_Lists_Autoboxing;
+package com.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge;
 
 import java.util.Objects;
 
