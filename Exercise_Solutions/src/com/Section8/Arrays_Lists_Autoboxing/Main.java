@@ -13,7 +13,8 @@ public class Main {
         //testSortArrays(5);
         //testFindMininum(5);
         //testReverseArray(new int[]{1,2,3,4,5,6});
-        testMobilePhone();
+        //testMobilePhone();
+        testBank();
     }
 
     private static void testMobilePhone(){

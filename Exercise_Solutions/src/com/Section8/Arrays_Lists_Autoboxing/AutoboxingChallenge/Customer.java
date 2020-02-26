@@ -24,6 +24,7 @@ public class Customer {
     }
 
     public Customer(String name) {
+        transactionsArrayList = new ArrayList<>();
         this.name = name;
     }
 
