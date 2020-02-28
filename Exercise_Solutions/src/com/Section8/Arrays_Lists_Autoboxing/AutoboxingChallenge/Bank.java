@@ -37,7 +37,11 @@ public class Bank {
         return returnS;
     }
 
+    public boolean isBranch(String branch){
+        return branchArrayList.contains(new Branch(branch));
+    }
     public Branch getBranch(String name){
+
         int index = branchArrayList.indexOf(new Branch(name));
         return branchArrayList.get(index);
     }

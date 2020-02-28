@@ -38,6 +38,9 @@ public class Branch {
         return returnS;
     }
 
+    public boolean hasCustomer(String customerName){
+       return customerArrayList.contains(new Customer(customerName));
+    }
 
     public void addCustomer(String customerName){
         Customer newCustomer = new Customer(customerName);

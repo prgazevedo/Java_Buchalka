@@ -34,28 +34,32 @@ class BankInterface {
         presentBankOptions();
         String input;
         if(!scanner.hasNextInt()) {
+            scanner.nextLine();
             System.out.println("Please enter a choice number!");
             return true;
         }
-        switch(Integer.parseInt(scanner.nextLine())){
+        switch(Integer.parseInt(scanner.nextLine())) {
             case 1:
                 System.out.println("Selected 1-Add Branch");
 
                 System.out.println("Enter branch name:");
-                input= scanner.nextLine();
-                if(bank.addNewBranch(input)) System.out.println("Branch added");
+                input = scanner.nextLine();
+                if (bank.addNewBranch(input)) System.out.println("Branch added");
                 return true;
             case 2:
                 System.out.println("Selected 2-Remove Branch");
-                 input= scanner.nextLine();
-                if(bank.removeBranch(input)) System.out.println("Branch removed");
+                input = scanner.nextLine();
+                if (bank.removeBranch(input)) System.out.println("Branch removed");
                 else System.out.println("Branch not removed. Branch not found.");
                 return true;
             case 3:
                 System.out.println("Selected 3-Branch Options");
-                 input= scanner.nextLine();
-                presentBranchOptions();
-                processBranchOptions(input);
+                input = inputBranchName();
+                if (bank.isBranch(input)){
+                    presentBranchOptions();
+                    processBranchOptions(input);
+                }
+                else System.out.println("Branch not found.");
                 return true;
             case 4:
                 System.out.println("Selected 4-List Branches and Customers");
@@ -74,10 +78,17 @@ class BankInterface {
 
     public boolean processBranchOptions(String branchName) {
         Branch b=bank.getBranch(branchName);
+        String customerName;
         switch (scanner.nextInt()) {
             case 1:
                 System.out.println("Selected 1-Add Customer");
-                b.addCustomer(getCustomerName());
+                customerName = getCustomerName();
+                if(!b.hasCustomer(customerName )){
+                    b.addCustomer(customerName);
+                    System.out.println("Customer added");
+                } else {
+                    System.out.println("Customer already in branch");
+                }
                 return true;
             case 2:
                 System.out.println("Selected 2-List Customers");
@@ -89,9 +100,16 @@ class BankInterface {
                 return true;
             case 4:
                 System.out.println("Selected 4-Add Customer transaction");
-                presentCustomerOptions();
-                processUserTransactions(b);
-                return false;
+                customerName = getCustomerName();
+                if(b.hasCustomer(customerName )){
+                    System.out.println("Customer name exists. Enter transactions. ");
+                    presentCustomerOptions();
+                    processUserTransactions(b,customerName);
+                    System.out.println("Customer transactions added");
+                } else {
+                    System.out.println("Customer does not exist in branch");
+                }
+                return true;
             case 5:
                 System.out.println("Selected 5-Exit");
                 return false;
@@ -100,28 +118,31 @@ class BankInterface {
         }
     }
 
-    public void processUserTransactions(Branch b){
-        String userName = getCustomerName();
-        System.out.println("Transaction: ");
+    public void processUserTransactions(Branch b,String customerName){
+
         while(scanner.hasNextDouble()){
-            Double transaction = scanner.nextDouble();
-            b.addCustomerTransaction(userName, transaction);
             System.out.println("Transaction: ");
+            Double transaction = scanner.nextDouble();
+            b.addCustomerTransaction(customerName, transaction);
         }
+        scanner.nextLine();
         System.out.println("No more transactions to add.");
 
+
     }
-/*
+
     private String inputBranchName(){
         System.out.println("Enter branch name:");
         String branchName= scanner.nextLine();
         return branchName;
     }
-*/
+
 
     private String getCustomerName(){
         System.out.println("Enter customer name:");
-        return scanner.nextLine();
+        scanner.nextLine();
+        String customerName = scanner.nextLine();
+        return customerName;
     }
     public void presentBranchOptions(){
         System.out.println("Branch options:");
