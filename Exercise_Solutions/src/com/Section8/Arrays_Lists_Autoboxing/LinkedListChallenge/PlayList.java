@@ -1,32 +1,112 @@
 package com.Section8.Arrays_Lists_Autoboxing.LinkedListChallenge;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Objects;
+import java.util.*;
 
 public class PlayList {
-    private ArrayList<Album> albumArrayList;
+    private AlbumLibrary albumLibrary;
     private LinkedList<Song> playList;
+    private PlayListInterface playListInterface;
+    private ListIterator<Song> playlistIterator;
+    private Song currentSong;
+
+    public AlbumLibrary getLib() {
+        return albumLibrary;
+    }
 
     public PlayList() {
-        albumArrayList = new ArrayList<>();
+        albumLibrary = new AlbumLibrary();
         playList = new LinkedList<>();
+        playListInterface = new PlayListInterface(this);
+
     }
 
 
-    public void createAlbum(String albumName) {
-        albumArrayList.add( new Album(albumName)) ;
+
+    public void addSongToPlaylist(Song song){
+        System.out.println("add Song To Playlist");
+        playList.add(song);
     }
 
-    public void addSongToAlbum(String albumName,String songName){
-        int index = albumArrayList.indexOf(new Album(albumName));
-       if( index !=-1 ){
-           Album album = albumArrayList.get(index);
-           album.addSong(songName);
-       }else {
-           System.out.println("album not found");
-       }
+    public void removeSongFromPlaylist(Song song){
+        System.out.println("remove Song From Playlist");
+        playList.removeFirstOccurrence(song);
     }
 
 
+    public void addAlbumToPlaylist(Album album){
+        System.out.println("add Album To Playlist");
+        if(album.getSongArrayList()!=null){
+            for (Song s:album.getSongArrayList())
+            {
+                playList.add(s);
+            }
+        }
+
+    }
+
+    public void removeAlbumFromPlaylist(Album album){
+        System.out.println("remove Album From Playlist");
+        if(album.getSongArrayList()!=null){
+            for (Song s:album.getSongArrayList())
+            {
+                playList.removeFirstOccurrence(s);
+            }
+        }
+    }
+
+    public Song getCurrentSong(){
+        if(checkPlaylist()) return currentSong;
+        else return null;
+    }
+
+
+    private boolean checkPlaylist(){
+        if(!playList.isEmpty()){
+            return true;
+        } else{
+            System.out.println("No songs in playlist. Add Songs to playlist");
+            return false;
+        }
+    }
+
+    public void playCurrentSong(){
+        if(checkPlaylist()){
+            currentSong = playList.getFirst();
+            System.out.println("Current Song is: "+ currentSong.getTitle());
+        } else{
+            System.out.println("No songs in playlist. Add Songs to playlist");
+        }
+    }
+
+
+
+    public void nextSong(){
+        if(checkPlaylist()){
+            if(playlistIterator.hasNext()){
+                currentSong = playlistIterator.next();
+                System.out.println("Advanced Song. current Song is now : "+ currentSong.getTitle());
+            }
+            else{
+                System.out.println("At the end of playlist");
+            }
+        }
+
+    }
+
+    public void previousSong(){
+        if(checkPlaylist()){
+            if(playlistIterator.hasPrevious()){
+                currentSong = playlistIterator.previous();
+                System.out.println("Rewind to previous Song. current Song is now : "+ currentSong.getTitle());
+            }
+            else{
+                System.out.println("At the beginning of playlist");
+            }
+        }
+
+    }
+
+    public void runPlayList() {
+        playListInterface.runPlayListInterface();
+    }
 }

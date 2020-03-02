@@ -8,15 +8,26 @@ public class Album {
     String title;
     ArrayList<Song> songArrayList;
 
+    public ArrayList<Song> getSongArrayList() {
+        return songArrayList;
+    }
+
     public Album(String title) {
         this.title = title;
         this.songArrayList = new ArrayList<>();
     }
 
+
+    public Song getSong(String songName){
+       int index =  songArrayList.indexOf(new Song(songName));
+       if(index!=-1){
+           return songArrayList.get(index);
+       }
+       else return null;
+    }
+
     public void addSong(String songName){
-        Random r = new Random();
-        double randomValue = (5.0) * r.nextDouble();
-        songArrayList.add(new Song(songName, randomValue));
+        songArrayList.add(new Song(songName));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.Section8.Arrays_Lists_Autoboxing;
 
 import com.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge.MobilePhone;
 import com.Section8.Arrays_Lists_Autoboxing.AutoboxingChallenge.Bank;
+import com.Section8.Arrays_Lists_Autoboxing.LinkedListChallenge.PlayList;
 
 import java.util.Scanner;
 
@@ -14,7 +15,13 @@ public class Main {
         //testFindMininum(5);
         //testReverseArray(new int[]{1,2,3,4,5,6});
         //testMobilePhone();
-        testBank();
+        //testBank();
+        testPlayList();
+    }
+
+    private static void testPlayList() {
+        PlayList playList = new PlayList();
+        playList.runPlayList();
     }
 
     private static void testMobilePhone(){
