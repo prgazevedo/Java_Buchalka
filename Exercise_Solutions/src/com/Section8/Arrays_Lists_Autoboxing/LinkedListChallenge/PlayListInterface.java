@@ -84,7 +84,7 @@ public class PlayListInterface {
                     return true;
                 case 4:
                     System.out.println("Selected 4-Replay");
-                    playList.getCurrentSong();
+                    System.out.println("Replay the song:"+playList.getCurrentSong().toString());
                     return true;
                 case 5:
                     System.out.println("Selected 5-List PlayList songs");

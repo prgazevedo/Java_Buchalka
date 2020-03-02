@@ -55,7 +55,9 @@ public class PlayList {
     }
 
     public Song getCurrentSong(){
-        if(checkPlaylist()) return currentSong;
+        if(checkPlaylist()) {
+            return currentSong;
+        }
         else return null;
     }
 
@@ -131,13 +133,14 @@ public class PlayList {
         public MyIterator(java.util.ListIterator<T> myIterator) {
             this.myIterator = myIterator;
             //Since we start at 0 we can only go forward
-            bMovingForward = true;
-            bMovingBackward = false;
+            bMovingForward = false;
+            bMovingBackward = true;
         }
 
         public void setMyIterator(java.util.ListIterator<T> myIterator) {
             this.myIterator = myIterator;
         }
+
 
         public boolean hasNext(){
             return myIterator.hasNext();
@@ -155,7 +158,12 @@ public class PlayList {
                 myIterator.next();
             }
 
-            return myIterator.next();
+            if(hasNext()) {
+                return myIterator.next();
+            }
+            else{
+                return myIterator.previous();
+            }
         }
 
         public  T previous(){
@@ -164,7 +172,15 @@ public class PlayList {
                 bMovingForward=false;
                 myIterator.previous();
             }
-            return myIterator.previous();
+
+            if(hasPrevious()) {
+                return myIterator.previous();
+            }
+            else{
+                return myIterator.next();
+            }
+
+
         }
     }
 
