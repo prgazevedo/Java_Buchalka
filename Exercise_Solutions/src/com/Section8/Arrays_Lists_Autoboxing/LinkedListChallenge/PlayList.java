@@ -6,7 +6,7 @@ public class PlayList {
     private AlbumLibrary albumLibrary;
     private LinkedList<Song> playList;
     private PlayListInterface playListInterface;
-    private ListIterator<Song> playlistIterator;
+    private MyIterator<Song> playlistIterator;
     private Song currentSong;
 
     public AlbumLibrary getLib() {
@@ -60,13 +60,15 @@ public class PlayList {
     }
 
 
-    private boolean checkPlaylist(){
-        if(!playList.isEmpty()){
-            return true;
-        } else{
-            System.out.println("No songs in playlist. Add Songs to playlist");
-            return false;
+    public boolean checkPlaylist(){
+        return (!playList.isEmpty());
+    }
+
+    public String printPlaylist(){
+        if(checkPlaylist()){
+            return playList.toString();
         }
+        return "";
     }
 
     public void playCurrentSong(){
@@ -109,4 +111,61 @@ public class PlayList {
     public void runPlayList() {
         playListInterface.runPlayListInterface();
     }
+
+    public boolean initialize() {
+        if(!playList.isEmpty())
+        {
+            playlistIterator = new MyIterator<>(playList.listIterator(0));
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public static class MyIterator<T> {
+        private java.util.ListIterator<T> myIterator;
+        private static boolean bMovingForward;
+        private static boolean bMovingBackward;
+
+        public MyIterator(java.util.ListIterator<T> myIterator) {
+            this.myIterator = myIterator;
+            //Since we start at 0 we can only go forward
+            bMovingForward = true;
+            bMovingBackward = false;
+        }
+
+        public void setMyIterator(java.util.ListIterator<T> myIterator) {
+            this.myIterator = myIterator;
+        }
+
+        public boolean hasNext(){
+            return myIterator.hasNext();
+        }
+
+        public boolean hasPrevious(){
+            return myIterator.hasPrevious();
+        }
+
+        public T next(){
+            bMovingForward=true;
+            if(bMovingBackward){
+                bMovingBackward=false;
+                //must advance one more
+                myIterator.next();
+            }
+
+            return myIterator.next();
+        }
+
+        public  T previous(){
+            bMovingBackward=true;
+            if(bMovingForward){
+                bMovingForward=false;
+                myIterator.previous();
+            }
+            return myIterator.previous();
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.Section8.Arrays_Lists_Autoboxing.LinkedListChallenge;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Song {
@@ -32,6 +33,19 @@ public class Song {
 
     public void setDuration(Double duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return Objects.equals(title, song.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title);
     }
 
     @Override

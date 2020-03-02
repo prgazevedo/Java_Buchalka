@@ -88,10 +88,9 @@ public class PlayListInterface {
                     return true;
                 case 5:
                     System.out.println("Selected 5-List PlayList songs");
-
+                    System.out.println("Playlist songs:"+playList.printPlaylist());
                     return true;
                 case 6:
-
                     System.out.println("Selected 6-Exit");
                     return false;
                     default:
@@ -125,7 +124,7 @@ public class PlayListInterface {
                         System.out.println("Song Name not valid");
                         return true;
                     }
-                    if(songNametoAdd!=null){
+                    if(songToAdd!=null){
                         System.out.println("Song data is: "+songToAdd.toString());
                         playList.addSongToPlaylist(songToAdd);
                     }
@@ -156,8 +155,14 @@ public class PlayListInterface {
                     return true;
                 case 4:
                     System.out.println("Selected 4-Enter Play Mode");
-                    runPlayModeInterface();
-                    return true;
+                    if(playList.checkPlaylist()){
+                        playList.initialize();
+                        runPlayModeInterface();
+                    }
+                    else{
+                        System.out.println("No songs in playlist. Add Songs to playlist");
+                    }
+                     return true;
                 case 5:
                     System.out.println("Selected 5-List Options again");
                     return true;
