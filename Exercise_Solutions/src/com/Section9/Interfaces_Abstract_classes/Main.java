@@ -2,8 +2,8 @@ package com.Section9.Interfaces_Abstract_classes;
 
 
 
-import com.Section9.Interfaces_Abstract_classes.InterfacesChallenge.Monsters;
-import com.Section9.Interfaces_Abstract_classes.InterfacesChallenge.Players;
+import com.Section9.Interfaces_Abstract_classes.InterfacesChallenge.Monster;
+import com.Section9.Interfaces_Abstract_classes.InterfacesChallenge.Player;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,14 +17,22 @@ public class Main {
     }
 
     private static void testInterfaces() {
-        Players players = new Players();
-        Monsters monsters = new Monsters();
-        System.out.println("Enter players:");
-        players.writeData(readValues());
-        System.out.println("Enter monsters:");
-        monsters.writeData(readValues());
-        System.out.println("Players saved are: "+players.readData().toString());
-        System.out.println("Monsters saved are: "+monsters.readData().toString());
+        Player player = new Player("Player 1", "Sabre");
+        Monster monster = new Monster( "Monster 1", "Claws");
+        System.out.println("Initial Player is: "+ player.toString());
+        System.out.println("Initial Monster is: "+ monster.toString());
+        System.out.println("Enter player name and weapon:");
+        ArrayList<String> playerData = readValues();
+        playerData.add(0,"30");
+        player.writeData(playerData);
+
+        System.out.println("Enter monster name and weapon:");
+        ArrayList<String> monsterData = readValues();
+        monsterData.add(0,"15");
+        monster.writeData(monsterData);
+
+        System.out.println("Player saved are: "+ player.toString());
+        System.out.println("Monster saved are: "+ monster.toString());
 
     }
 
