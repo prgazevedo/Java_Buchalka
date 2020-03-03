@@ -1,4 +1,4 @@
-package com.Section9.Interfaces_Abstract_classes.InterfacesChallenge;
+package com.Section9.Interfaces_Inner_Anonymous_Abstract_classes.InterfacesChallenge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,18 +27,21 @@ public class Player extends GameCharacter implements ISaveable{
     }
 
     @Override
-    public List readData() {
+    public List writeData() {
 
         ArrayList<String> stringArrayList = new ArrayList<>();
-        stringArrayList.addAll( super.readData());
+        stringArrayList.addAll( super.writeData());
         stringArrayList.add(this.playerWeapon);
         return stringArrayList;
     }
 
     @Override
-    public void writeData(List toWrite) {
-        super.writeData(toWrite);
-        playerWeapon=(String)toWrite.get(2);
+    public void readData(List toWrite) {
+        if(toWrite!=null && toWrite.size()>2){
+            super.readData(toWrite);
+            playerWeapon=(String)toWrite.get(2);
+        }
+
 
     }
 }

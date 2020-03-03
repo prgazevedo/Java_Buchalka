@@ -1,4 +1,4 @@
-package com.Section9.Interfaces_Abstract_classes.InterfacesChallenge;
+package com.Section9.Interfaces_Inner_Anonymous_Abstract_classes.InterfacesChallenge;
 
 
 
@@ -10,6 +10,8 @@ package com.Section9.Interfaces_Abstract_classes.InterfacesChallenge;
 import java.util.List;
 
 public interface ISaveable<T> {
-    List<T> readData();
-       void      writeData(List<T> toWrite);
+    //Method to write data to storage
+    List<T>  writeData();
+    //Method to read data from storage
+       void  readData(List<T> toWrite);
 }

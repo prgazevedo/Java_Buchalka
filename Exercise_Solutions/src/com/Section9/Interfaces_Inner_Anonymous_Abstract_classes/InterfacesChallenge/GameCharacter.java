@@ -1,4 +1,4 @@
-package com.Section9.Interfaces_Abstract_classes.InterfacesChallenge;
+package com.Section9.Interfaces_Inner_Anonymous_Abstract_classes.InterfacesChallenge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class GameCharacter implements ISaveable{
     }
 
     @Override
-    public List readData() {
+    public List writeData() {
         ArrayList<String> stringArrayList = new ArrayList<>();
         stringArrayList.add(name);
         stringArrayList.add(""+health);
@@ -41,7 +41,7 @@ public class GameCharacter implements ISaveable{
     }
 
     @Override
-    public void writeData(List toWrite) {
+    public void readData(List toWrite) {
         this.health = Integer.parseInt( (String) toWrite.get(0));
         this.name = (String)toWrite.get(1);
 
