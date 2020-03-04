@@ -21,11 +21,7 @@ public class Album {
     }
 
     public boolean addSong(String title, double duration) {
-        if(findSong(title) == null) {
-            this.songlist.add(new Song(title, duration));
-            return true;
-        }
-        return false;
+        return songlist.add(new Song(title, duration));
     }
 
     private Song findSong(String title) {
@@ -62,16 +58,17 @@ public class Album {
     private class Songlist {
         private ArrayList<Song> songArrayList;
 
-        public Songlist(ArrayList<Song> songArrayList) {
-            this.songArrayList = songArrayList;
-        }
 
         public Songlist() {
             songArrayList = new ArrayList<>();
         }
 
-        public void add(Song songToAdd){
-            songArrayList.add(songToAdd);
+        public boolean add(Song songToAdd){
+           if(!songArrayList.contains(songToAdd)) {
+               songArrayList.add(songToAdd);
+               return true;
+           }
+           return false;
         }
 
         public Song findSong(String title) {

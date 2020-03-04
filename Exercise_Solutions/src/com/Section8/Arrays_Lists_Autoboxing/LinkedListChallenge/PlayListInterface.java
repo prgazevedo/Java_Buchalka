@@ -121,7 +121,7 @@ public class PlayListInterface {
                         System.out.println("Song name is: "+songNametoAdd);
                         songToAdd =  playList.getLib().getSong(songNametoAdd);
                     }else{
-                        System.out.println("Song Name not valid");
+                        System.out.println("Song Node not valid");
                         return true;
                     }
                     if(songToAdd!=null){
@@ -141,7 +141,7 @@ public class PlayListInterface {
                         System.out.println("Song name is: "+songNametoRemove);
                         songToRemove =  playList.getLib().getSong(songNametoRemove);
                     }else{
-                        System.out.println("Song Name not valid");
+                        System.out.println("Song Node not valid");
                         return true;
                     }
 

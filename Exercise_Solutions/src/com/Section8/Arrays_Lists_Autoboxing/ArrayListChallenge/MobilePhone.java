@@ -66,7 +66,7 @@ public class MobilePhone {
 
     public static Contact queryUserForContact(){
         System.out.println("Enter contact:");
-        System.out.println("1-Name:");
+        System.out.println("1-Node:");
         Contact userContact= new Contact();
         userContact.setName(scanner.nextLine());
         System.out.println("2-Phone number:");

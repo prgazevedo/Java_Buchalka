@@ -50,7 +50,7 @@ public class BankAccount {
 
 
     public BankAccount() {
-        this(1000,0.0,"default Name","default email",0);
+        this(1000,0.0,"default Node","default email",0);
     }
 
     //full ctor
