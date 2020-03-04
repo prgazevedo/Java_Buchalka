@@ -69,22 +69,31 @@ public class MyLinkedList implements ILinkedList {
 
     @Override
     public boolean removeItem(ListItem listItem) {
-        if (this.root != null || listItem != null) {
+        if ( listItem == null)  System.out.println("listItem cannot be null");
+        else if(this.root ==null) System.out.println("root is null - list is empty");
+        else {
             ListItem traversing = this.root;
             while (traversing != null) {
-                if (traversing.compareTo(listItem) < 0) traversing = traversing.next();
+                if (traversing.compareTo(listItem) < 0) {
+                    traversing = traversing.next();
+                }
                 else if (traversing.compareTo(listItem) == 0) {
                     //Found item so we can remove it
-                    ListItem toRemove = traversing.previous().next();
-                    traversing.previous().setNext(toRemove.next());
-                    toRemove.next().setPrevious(toRemove.previous());
+                    //System.out.println(("Removing item: "+listItem.get().toString()));
+                    //root special case
+                    if(traversing == this.root) this.root = traversing.next();
+                    //end special case
+                    else if(traversing.next()==null) traversing.previous().setNext(null);
+                    else traversing.previous().setNext(traversing.next()).setPrevious(traversing.previous());
                     return true;
-                } else {
+                }
+                else {
                     return false;
                 }
             }
 
         }
+
         return false;
 
     }

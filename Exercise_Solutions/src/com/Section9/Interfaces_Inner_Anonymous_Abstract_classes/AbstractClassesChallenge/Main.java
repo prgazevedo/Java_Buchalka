@@ -84,7 +84,13 @@ public class Main {
 
         }
         myList.traverse(myList.getRoot());
+        for (String s : data)
+        {
+            myList.removeItem(new Node(s));
+            // create new item with value set to the string s
 
+        }
+        myList.traverse(myList.getRoot());
     }
 
 }
