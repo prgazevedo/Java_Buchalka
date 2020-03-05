@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope.GamePackage;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers.GamePackage;
 
 
 

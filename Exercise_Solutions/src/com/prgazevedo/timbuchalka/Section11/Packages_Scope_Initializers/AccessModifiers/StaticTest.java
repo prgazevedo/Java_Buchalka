@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope.AccessModifiers;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers.AccessModifiers;
 
 public class StaticTest {
     //static variable is associated with the class and not each instance

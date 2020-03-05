@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers;
 
 
 public class Main {
@@ -7,7 +7,13 @@ public class Main {
     public static void main(String[] args) {
 
        // testMyWindow();
-        testScopeCheck();
+       // testScopeCheck();
+        testStaticInitializationBlocks();
+    }
+
+    private static void testStaticInitializationBlocks() {
+        StaticInitializationBlocks SIB = new StaticInitializationBlocks();
+
     }
 
     private static void testMyWindow() {

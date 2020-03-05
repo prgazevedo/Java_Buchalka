@@ -1,8 +1,5 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope.AccessModifiers;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers.AccessModifiers;
 
-
-import com.prgazevedo.timbuchalka.Section11.Packages_Scope.MyWindow;
-import com.prgazevedo.timbuchalka.Section11.Packages_Scope.ScopeCheck;
 
 import java.util.Scanner;
 

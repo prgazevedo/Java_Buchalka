@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers;
 
 public class ScopeCheck {
     private int Factor = 2;

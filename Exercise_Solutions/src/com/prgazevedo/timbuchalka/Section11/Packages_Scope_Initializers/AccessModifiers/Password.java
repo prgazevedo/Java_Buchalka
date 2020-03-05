@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope.AccessModifiers;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers.AccessModifiers;
 
 public class Password {
     private static final int passwordkey = 123456789;
@@ -8,7 +8,9 @@ public class Password {
        this.password = encryptDecrypt(password);
     }
 
-    private int encryptDecrypt(String password){
+    //notice the final keyword in this method.
+    // The purpose is to disallow that a subclass can override the method.
+    private final int  encryptDecrypt(String password){
         return  password.hashCode() ^ passwordkey ;
     }
 

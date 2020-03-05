@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section11.Packages_Scope;
+package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
