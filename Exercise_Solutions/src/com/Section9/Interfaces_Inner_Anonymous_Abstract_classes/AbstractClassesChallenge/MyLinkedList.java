@@ -89,6 +89,7 @@ public class MyLinkedList implements ILinkedList {
                 }
                 else {
                     return false;
+
                 }
             }
 
