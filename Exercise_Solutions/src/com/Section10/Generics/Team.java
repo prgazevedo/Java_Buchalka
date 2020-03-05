@@ -5,13 +5,11 @@ import java.util.Objects;
 
 public abstract class Team implements Comparable<Team>{
     private String teamName;
-    private String sportType;
     private ArrayList<Player> teamMembers = new ArrayList<>();
     private int score;
 
-    public  Team(String teamName, String sportType) {
+    public  Team(String teamName) {
         this.teamName = teamName;
-        this.sportType = sportType;
     }
 
     public void addPlayer(Player player){
@@ -22,25 +20,29 @@ public abstract class Team implements Comparable<Team>{
 
     }
 
-
     public String getTeamName() {
         return teamName;
     }
-
-
     public int getScore() {
         return score;
     }
-
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void printPlayers(){
+        System.out.println("Has the following players:");
+        for (Player p:teamMembers)
+        {
+            System.out.println("Player: "+p.getName());
+        }
     }
 
     @Override
     public int compareTo(Team o) {
         if(o != null){
-            if ( this.score < o.score ) return -1;
-            else if(this.score > o.score) return 1;
+            if ( this.score > o.score ) return -1;
+            else if(this.score < o.score) return 1;
         }
         return 0;
     }

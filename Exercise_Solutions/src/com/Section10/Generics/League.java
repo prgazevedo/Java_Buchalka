@@ -7,6 +7,7 @@ import java.util.List;
 
 public class League<T extends Team>  {
     private ArrayList<T> teamArrayList;
+    private int numberGames;
 
 
     public League() {
@@ -20,32 +21,38 @@ public class League<T extends Team>  {
             return false;
         }
         teamArrayList.add(team);
+        System.out.println("Team: "+team.getTeamName()+" was added to the league.");
+        return true;
     }
 
-    public boolean addScores(String teamA, String teamB, GameResult result)
+    public boolean addScores(T teamA, T teamB, GameResult result)
     {
-        if(!teamArrayList. || !teamArrayList.contains(teamB) )    {
+        int indexA = teamArrayList.indexOf(teamA);
+        int indexB = teamArrayList.indexOf(teamB);
+
+        if(indexA==-1 || indexB==-1 )    {
             System.out.println("Teams not in league");
             return false;
         }
         else
         {
-            int indexA = teamArrayList.indexOf(teamA);
-            int indexB = teamArrayList.indexOf(teamB);
-            if(indexA!=-1 && indexB!=-1){
-                switch (result){
-                    case Win:
-                        teamArrayList.get(indexA).setScore(GameResult.Win.getResult());
-                        return true;
-                    case Loss:
-                        teamArrayList.get(indexB).setScore(GameResult.Win.getResult());
-                        return true;
-                    case Draw:
-                        teamArrayList.get(indexA).setScore(GameResult.Draw.getResult());
-                        teamArrayList.get(indexB).setScore(GameResult.Draw.getResult());
-                        return true;
-                }
+            numberGames++;
+            switch (result){
+                case Win:
+                    System.out.println("Team: "+teamA.getTeamName()+" won against team: "+teamB.getTeamName());
+                    teamArrayList.get(indexA).setScore(GameResult.Win.getResult());
+                    return true;
+                case Loss:
+                    System.out.println("Team: "+teamA.getTeamName()+" lost against team: "+teamB.getTeamName());
+                    teamArrayList.get(indexB).setScore(GameResult.Win.getResult());
+                    return true;
+                case Draw:
+                    System.out.println("Team: "+teamA.getTeamName()+" draw against team: "+teamB.getTeamName());
+                    teamArrayList.get(indexA).setScore(GameResult.Draw.getResult());
+                    teamArrayList.get(indexB).setScore(GameResult.Draw.getResult());
+                    return true;
             }
+
             return false;
 
         }
@@ -59,8 +66,8 @@ public class League<T extends Team>  {
     }
 
     public void printOrderedLeague(){
-        System.out.println("The ordered League is");
-        System.out.println("=====================");
+        System.out.println("The ordered League after "+numberGames+" games");
+        System.out.println("==========================================");
         for (T t:this.getOrderedList() )
         {
             System.out.println("->"+t.getTeamName()+" points: "+t.getScore());
@@ -69,7 +76,7 @@ public class League<T extends Team>  {
 
     }
 
-    private enum GameResult{
+    enum GameResult{
 
         Win(3), Loss(0), Draw(1);
 

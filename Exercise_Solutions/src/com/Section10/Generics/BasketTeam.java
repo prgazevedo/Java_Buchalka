@@ -1,10 +1,13 @@
 package com.Section10.Generics;
 
 public class BasketTeam extends Team {
-
-    public BasketTeam(String teamName, String sportType) {
-        super(teamName, "Tennis");
+    private String sportType;
+    public BasketTeam(String teamName) {
+        super(teamName);
+        this.sportType="Basket";
         this.setScore(0);
-        this.setTeamMembers(5);
+
     }
+
+
 }
