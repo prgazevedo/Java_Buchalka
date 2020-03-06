@@ -1,4 +1,4 @@
-package com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge;
+package com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing_SortingAlgorithms.ArrayListChallenge;
 
 import java.util.Objects;
 

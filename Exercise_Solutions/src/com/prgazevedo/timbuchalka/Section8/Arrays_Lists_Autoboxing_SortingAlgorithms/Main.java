@@ -1,8 +1,8 @@
-package com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing;
+package com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing_SortingAlgorithms;
 
-import com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing.ArrayListChallenge.MobilePhone;
-import com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing.AutoboxingChallenge.Bank;
-import com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing.LinkedListChallenge.PlayList;
+import com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing_SortingAlgorithms.ArrayListChallenge.MobilePhone;
+import com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing_SortingAlgorithms.AutoboxingChallenge.Bank;
+import com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing_SortingAlgorithms.LinkedListChallenge.PlayList;
 
 import java.util.Scanner;
 

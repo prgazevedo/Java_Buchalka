@@ -1,6 +1,7 @@
-package com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing;
+package com.prgazevedo.timbuchalka.Section8.Arrays_Lists_Autoboxing_SortingAlgorithms;
 
-import java.util.Scanner;
+import java.util.Collections;
+import java.util.List;
 
 public class SortingAlgorithms {
 
@@ -8,6 +9,12 @@ public class SortingAlgorithms {
         System.out.println(text);
         for (int i1 : array) {
             System.out.println(i1);
+        }
+    }
+
+    private static void printList(List<? extends T> list) {
+        for (T t:list) {
+            System.out.printf(t.toString());
         }
     }
 
@@ -33,6 +40,34 @@ public class SortingAlgorithms {
         printArray("Sorted array is:", inputArray);
         return inputArray;
 
+    }
+
+    //bubble sort --> the simplest sorting algorithm --> Using the Collections
+    public static List<? extends T> bubbleSortList(List<? extends T> list){
+        // Has O(n^2) but is worse than insertion sort
+        System.out.println("Sorting using bubble sort algorithm");
+        System.out.println("UnSorted array is:");
+        printList(list);
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if(list.get(i).compareTo(list.get(j))>0){
+                    Collections.swap(list,i,j);
+                }
+            }
+        }
+        printList(list);
+        return list;
+
+    }
+
+    private class T implements Comparable{
+        public T() {
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            return this.compareTo(o);
+        }
     }
 
     //insertion sort
