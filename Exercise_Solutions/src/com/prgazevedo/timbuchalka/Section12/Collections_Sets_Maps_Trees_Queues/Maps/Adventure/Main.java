@@ -28,31 +28,28 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));
-        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building"));
-        locations.put(2, new Location(2, "You are at the top of a hill"));
-        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring"));
-        locations.put(4, new Location(4, "You are in a valley beside a stream"));
-        locations.put(5, new Location(5, "You are in the forest"));
-
-        locations.get(1).addExit("N",5);
-        locations.get(1).addExit("S",4);
-        locations.get(1).addExit("E",3);
-        locations.get(1).addExit("W",2);
-
-        locations.get(2).addExit("N",5);
-
-
-        locations.get(3).addExit("W",1);
-
-
-        locations.get(4).addExit("N",1);
-        locations.get(4).addExit("W",2);
-
-
-        locations.get(5).addExit("S",1);
-        locations.get(5).addExit("W",2);
-
+        Map<String, Integer> exits = new HashMap<>();
+        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java",exits));
+        exits = new HashMap<>();
+        exits.put("N",5);
+        exits.put("S",4);
+        exits.put("E",3);
+        exits.put("W",2);
+        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building",exits));
+        exits = new HashMap<>();
+        exits.put("N",5);
+        locations.put(2, new Location(2, "You are at the top of a hill",exits));
+        exits = new HashMap<>();
+        exits.put("W",1);
+        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring",exits));
+        exits = new HashMap<>();
+        exits.put("N",1);
+        exits.put("W",2);
+        locations.put(4, new Location(4, "You are in a valley beside a stream",exits));
+        exits = new HashMap<>();
+        exits.put("S",1);
+        exits.put("W",2);
+        locations.put(5, new Location(5, "You are in the forest",exits));
 
 
         int selectedLocation=1;
@@ -60,7 +57,7 @@ public class Main {
             System.out.println(locations.get(selectedLocation).getDescription());
             if(selectedLocation==0) break;
 
-            Map<String, Integer> exits= locations.get(selectedLocation).getExits();
+            exits= locations.get(selectedLocation).getExits();
             System.out.print("Exits are: ");
             for (String s:exits.keySet())
             {
