@@ -21,7 +21,8 @@ public final class Location {
         this.description = description;
         //Technique#5 is to make inside copies of all outside data
         // Never store references to external, mutable objects passed to the constructor; if necessary, create copies, and store references to the copies
-        this.exitsMap = new HashMap<>(exits);
+        if(exits==null) this.exitsMap = new HashMap<>();
+        else   this.exitsMap = new HashMap<>(exits);
         exitsMap.put("Q",0);
     }
 
