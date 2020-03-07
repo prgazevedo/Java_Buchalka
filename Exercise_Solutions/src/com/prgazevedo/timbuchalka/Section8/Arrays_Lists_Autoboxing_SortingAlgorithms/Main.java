@@ -11,12 +11,12 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //testSortArrays(5);
+        testSortArrays();
         //testFindMininum(5);
         //testReverseArray(new int[]{1,2,3,4,5,6});
         //testMobilePhone();
         //testBank();
-        testPlayList();
+        //testPlayList();
     }
 
     private static void testPlayList() {
@@ -52,16 +52,18 @@ public class Main {
         System.out.println("Reverse array: ");
     }
 
-    private static void testSortArrays(int capacity) {
+    private static void testSortArrays() {
         //int[] inputArray = getIntegerArray(capacity);
         int inputArray1[]={3,1,7,2,5};
-        SortingAlgorithms.bubbleSortArray(capacity, inputArray1);
+        SortingAlgorithms.bubbleSortArray(inputArray1.length, inputArray1);
         int inputArray2[]={3,1,7,2,5};
-        SortingAlgorithms.insertionSortArray(capacity, inputArray2);
+        SortingAlgorithms.insertionSortArray(inputArray2.length, inputArray2);
         int inputArray3[]={3,1,7,2,5};
-        SortingAlgorithms.selectionSortArray(capacity, inputArray3);
+        SortingAlgorithms.selectionSortArray(inputArray3.length, inputArray3);
         int inputArray4[]={3,1,7,2,5};
-        SortingAlgorithms.mergeSortArray(capacity, inputArray4);
+        SortingAlgorithms.mergeSortArray(inputArray4.length, inputArray4);
+        int inputArray5[]={3,1,7,2,5};
+        SortingAlgorithms.bubbleSortList(SortingAlgorithms.initializeList(inputArray5));
     }
 
 

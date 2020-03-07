@@ -26,14 +26,16 @@ public class Main {
         theatre.reserveSeat("A7");
         System.out.println("Print seat list");
         theatre.prettyPrintSeatList(theatre.getSeatList());
-        System.out.println("Print seat list shallow copy");
-        theatre.prettyPrintSeatList(shallowCopy);
-        System.out.println("We can reverse the main seat list");
-        theatre.prettyPrintSeatList(theatre.reverseSeatList());
-        System.out.println("Or we can shuffle the main seat list");
-        theatre.prettyPrintSeatList(theatre.shuffleSeatList());
-        System.out.println("But the reservations are the same");
-        theatre.prettyPrintSeatList(shallowCopy);
+//        System.out.println("Print seat list shallow copy");
+//        theatre.prettyPrintSeatList(shallowCopy);
+//        System.out.println("We can reverse the main seat list");
+//        theatre.prettyPrintSeatList(theatre.reverseSeatList());
+//        System.out.println("Or we can shuffle the main seat list");
+//        theatre.prettyPrintSeatList(theatre.shuffleSeatList());
+//        System.out.println("But the reservations are the same");
+//        theatre.prettyPrintSeatList(shallowCopy);
+        System.out.println("Print seat list sorted by price");
+        theatre.prettyPrintSeatList(theatre.sortSeatListByPrice());
 
 
     }

@@ -7,6 +7,20 @@ import java.util.*;
 public class Theatre {
     private final String theatreName;
     private final int numRows,numColumns;
+    private static final double BASE_SEAT_PRICE = 12.0;
+
+    //We can compare elements in a Collection by using Comparator or implementing the Comparable interface
+    //Using a Comparator + an anonymous class definition allows to define several different comparators
+    private final Comparator<Seat> SEAT_PRICE_COMPARATOR = new Comparator<Seat>() {
+        @Override
+        public int compare(Seat seat1, Seat seat2) {
+            if(seat1.price<seat2.price){
+                return -1;
+            } else if(seat1.price>seat2.price){
+                return 1;
+            } else return 0;
+        }
+    };
 
 /*
  #1 More generic  is the Collection interface
@@ -33,18 +47,21 @@ private List<Seat> seatList = new ArrayList<>();
 private Collection<Seat> seatList = new LinkedHashSet<>();
 */
 
-    public Theatre(String theatreName, int numRows, int numColumns) {
 
+    public Theatre(String theatreName, int numRows, int numColumns) {
         this.theatreName = theatreName;
         this.numRows=numRows;
         this.numColumns=numColumns;
         char alphabet='A';
+        double seatprice = BASE_SEAT_PRICE;
         for (int i = 0; i <numRows ; i++) {
             for (int j = 0; j <numColumns ; j++) {
                 String identifier=((char)(alphabet+i))+String.valueOf(j+1);
-                seatList.add(new Seat(identifier));
+                if((j>=(numColumns/2)-2) && (j<(numColumns/2)+2)) seatprice+=2.0;
+                if((i>(numRows/2)-2) && (i<(numRows/2)+2)) seatprice+=2.0;
+                seatList.add(new Seat(identifier,seatprice));
+                seatprice = BASE_SEAT_PRICE;
             }
-
         }
     }
 
@@ -59,9 +76,19 @@ private Collection<Seat> seatList = new LinkedHashSet<>();
         return seatList;
     }
 
+    public Collection<Seat> getSeatCollection(){
+        return seatList;
+    }
+
     // the collections bulk constructor only makes shallow copies (shared objects)
     public List<Seat> makeShallowCopy(){
         return new ArrayList<>(seatList);
+        //Collections.copy(newlist,seatlist) would also only create shallow copy
+    }
+
+    public List<Seat> sortSeatListByPrice(){
+        Collections.sort(seatList,SEAT_PRICE_COMPARATOR);
+        return seatList;
     }
 
     public List<Seat> reverseSeatList(){
@@ -79,9 +106,11 @@ private Collection<Seat> seatList = new LinkedHashSet<>();
         System.out.println("-------------------------------------------");
         for(int i=0; i< numRows; i++) {
             for (int j = 0; j < numColumns; j++) {
-                System.out.print(seatList.get(index).getIdentifier());
-                if(seatList.get(index).isReserved()) System.out.print("X");
-                else System.out.print("V");
+                Seat currentSeat = seatList.get(index);
+                System.out.print(currentSeat.getIdentifier());
+                if(currentSeat.isReserved()) System.out.print("-X-");
+                else System.out.print("-O-");
+                System.out.print(String.format("%.0f",currentSeat.price));
                 System.out.print(" ");
                 index++;
             }
@@ -135,7 +164,7 @@ private Collection<Seat> seatList = new LinkedHashSet<>();
     //But for this the element has to implement the interface IComparable
 
     public boolean reserveSeat(String seatNumber){
-        Seat reserveSeat = new Seat(seatNumber);
+        Seat reserveSeat = new Seat(seatNumber,BASE_SEAT_PRICE);
         /*
         The binarySearch algorithm searches for a specified element in a sorted List.
          binary search is the fastest way to search in a sorted list O(log n)
@@ -156,15 +185,18 @@ private Collection<Seat> seatList = new LinkedHashSet<>();
     //Notice that T element implements the Comparable<T> interface
     class Seat implements Comparable<Seat>{
         private final String identifier;
+        private double price;
         private boolean isReserved;
+
+
+        public Seat(String identifier, double price) {
+            this.identifier = identifier;
+            this.price=price;
+            isReserved=false;
+        }
 
         public String getIdentifier() {
             return identifier;
-        }
-
-        public Seat(String identifier) {
-            this.identifier = identifier;
-            isReserved=false;
         }
 
         public boolean setReserved() {
@@ -173,6 +205,10 @@ private Collection<Seat> seatList = new LinkedHashSet<>();
 
         public boolean isReserved() {
             return isReserved;
+        }
+
+        public double getPrice() {
+            return price;
         }
 
         @Override
