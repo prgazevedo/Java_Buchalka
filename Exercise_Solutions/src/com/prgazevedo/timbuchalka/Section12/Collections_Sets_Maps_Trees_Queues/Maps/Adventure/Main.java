@@ -39,21 +39,21 @@ public class Main {
         locations.get(1).addExit("S",4);
         locations.get(1).addExit("E",3);
         locations.get(1).addExit("W",2);
-        locations.get(1).addExit("Q",0);
 
         locations.get(2).addExit("N",5);
-        locations.get(2).addExit("Q",0);
+
 
         locations.get(3).addExit("W",1);
-        locations.get(3).addExit("Q",0);
+
 
         locations.get(4).addExit("N",1);
         locations.get(4).addExit("W",2);
-        locations.get(4).addExit("Q",0);
+
 
         locations.get(5).addExit("S",1);
         locations.get(5).addExit("W",2);
-        locations.get(5).addExit("Q",0);
+
+
 
         int selectedLocation=1;
         while(true){
@@ -66,13 +66,19 @@ public class Main {
             {
                 System.out.print(s+",");
             }
-
+            System.out.println();
             System.out.println("Choose an exit:");
-            String choice = scanner.nextLine();
+            String choice = scanner.nextLine().toUpperCase();
+            String[] splitCommands=choice.split("");
+            choice = "";
+            for (String s:splitCommands){
+                if(Commands.getValidCommands().contains(s)){
+                    choice=Commands.getExit(s);
+                }
+            }
             if(exits.containsKey(choice))
             {
                 selectedLocation=  exits.get(choice);
-                System.out.println("You choose: "+choice);
 
             } else{
                 System.out.println("Not a valid exit");
