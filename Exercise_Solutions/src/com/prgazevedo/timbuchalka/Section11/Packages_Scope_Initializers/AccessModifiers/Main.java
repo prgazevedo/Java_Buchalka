@@ -32,15 +32,18 @@ public class Main {
     }
 
     private static void testStaticTest() {
-        //since the numberofInstances is static it will be shared between the instances (belongs to the class)
+        /**
+         * since the numberofInstances is static it will be shared between the instances (belongs to the class)
+         */
         StaticTest one = new StaticTest("one instance");
         System.out.println("Created instance of StaticTest: "+one.getName()+" Number of instances is: "+one.getNumInstances());
         StaticTest two = new StaticTest("two instance");
         System.out.println("Created instance of StaticTest: "+two.getName()+" Number of instances is: "+two.getNumInstances());
         StaticTest three = new StaticTest("three instance");
-        //notice the weird call to previous class
         System.out.println("Created instance of StaticTest: "+three.getName()+" Number of instances is: "+two.getNumInstances());
-        //the correct way to implement is to make getNumInstances a static method
+        /**
+         * the correct way to implement is to make getNumInstances a static method
+         */
         System.out.println("Static call to Number of instances is: "+StaticTest.staticGetNumInstances());
 
     }

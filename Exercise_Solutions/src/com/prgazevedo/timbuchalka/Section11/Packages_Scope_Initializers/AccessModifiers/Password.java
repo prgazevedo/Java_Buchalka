@@ -8,8 +8,10 @@ public class Password {
        this.password = encryptDecrypt(password);
     }
 
-    //notice the final keyword in this method.
-    // The purpose is to disallow that a subclass can override the method.
+/**
+ * notice the final keyword in this method.
+ * The purpose is to disallow that a subclass can override the method.
+ */
     private final int  encryptDecrypt(String password){
         return  password.hashCode() ^ passwordkey ;
     }

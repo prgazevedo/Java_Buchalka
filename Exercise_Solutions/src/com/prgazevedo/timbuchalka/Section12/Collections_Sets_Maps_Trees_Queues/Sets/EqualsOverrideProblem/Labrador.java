@@ -5,9 +5,11 @@ public class Labrador extends Dog {
         super(dogName);
     }
 
-    //Notice that override does not compile because
-    //Dog equals was made final so that subclasses cannot
-    //override and mess up the equals
+/**
+ *Notice that override does not compile because
+ *Dog equals was made final so that subclasses cannot
+ *override and mess up the equals
+ */
 //    @Override
 //    public boolean equals(Object obj){
 //        if(obj==this)return true;

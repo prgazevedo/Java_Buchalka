@@ -2,6 +2,11 @@ package com.prgazevedo.timbuchalka.Section12.Collections_Sets_Maps_Trees_Queues.
 
 import java.util.Objects;
 
+/**
+ *notice that we implemented the comparable interface in the StockItem
+ *this is used for the treemap (compareTo is called) to order the collection
+ *in comparison with the HashMap that return scrambled entries
+ */
 public class StockItem implements Comparable<StockItem>{
     private final String name;
     private double price;

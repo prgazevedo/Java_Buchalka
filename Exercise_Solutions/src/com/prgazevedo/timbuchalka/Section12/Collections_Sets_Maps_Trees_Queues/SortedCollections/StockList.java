@@ -41,9 +41,11 @@ public class StockList {
         return stockList.get(itemName);
     }
 
-    //Allows only a read-only view into our map.
-    //Notice that this is faster than creating a copy of the map
-    //if client tries to modify it will throw a unsupportedOperationException
+/**
+ * Allows only a read-only view into our map.
+ * Notice that this is faster than creating a copy of the map
+ * if client tries to modify it will throw a unsupportedOperationException
+ */
     public Map<String,StockItem> Items(){
         return Collections.unmodifiableMap(stockList);
     }

@@ -16,7 +16,9 @@ public class SetMain {
         }
 
 //        System.out.println("Squares until 100");
-//        //notice that the elements will be printed in chaotic order
+        /**
+         *notice that the elements will be printed in chaotic order
+         */
 //        for (Integer i:squares){
 //            System.out.println("\t"+i);
 //        }

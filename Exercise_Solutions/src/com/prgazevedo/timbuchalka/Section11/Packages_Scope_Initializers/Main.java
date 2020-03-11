@@ -27,7 +27,9 @@ public class Main {
         ScopeCheck scopeCheck = new ScopeCheck();
         System.out.println("ScopeCheck multiplication faction is: "+scopeCheck.getMultiplicationFactor());
         scopeCheck.printMultiplication(10);
-        //Notice the weird instantiation of an inner class
+        /**
+         * Notice the weird instantiation of an inner class
+         * */
         ScopeCheck.InnerClass scopeCheckInner = scopeCheck.new InnerClass();
         scopeCheckInner.setSumFactor(3);
         scopeCheckInner.printInnerSum(10);

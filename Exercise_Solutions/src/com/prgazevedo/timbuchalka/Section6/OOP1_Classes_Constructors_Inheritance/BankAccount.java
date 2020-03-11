@@ -53,7 +53,9 @@ public class BankAccount {
         this(1000,0.0,"default Node","default email",0);
     }
 
-    //full ctor
+    /**
+     *full ctor
+     */
     public BankAccount(int accountNumber, double balance, String customerName, String email, int phoneNumber) {
         //Direct access to the fields instead of using the setters - at Ctor time the rest of code might not ne initialized yet
         this.accountNumber = accountNumber;
@@ -63,7 +65,9 @@ public class BankAccount {
         this.phoneNumber = phoneNumber;
     }
 
-    //alternative partial ctor
+/**
+ *alternative partial ctor
+ */
     public BankAccount(String customerName, String email, int phoneNumber){
         this(1000, 0.0, customerName, email, phoneNumber);
     }

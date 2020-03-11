@@ -9,8 +9,10 @@ public class Theatre {
     private final int numRows,numColumns;
     private static final double BASE_SEAT_PRICE = 12.0;
 
-    //We can compare elements in a Collection by using Comparator or implementing the Comparable interface
-    //Using a Comparator + an anonymous class definition allows to define several different comparators
+    /**
+     *We can compare elements in a Collection by using Comparator or implementing the Comparable interface
+     * Using a Comparator + an anonymous class definition allows to define several different comparators
+     * */
     private final Comparator<Seat> SEAT_PRICE_COMPARATOR = new Comparator<Seat>() {
         @Override
         public int compare(Seat seat1, Seat seat2) {
@@ -33,19 +35,19 @@ Positional access (get), Search (indexOf), Iteration (ListIterator), Range-view 
 */
 
 /*
- List interface
- notice how we can interchage the type of list between ArrayList and LinkedList
- This is because both implement the same List Interface
+ * List interface
+ * notice how we can interchage the type of list between ArrayList and LinkedList
+ * This is because both implement the same List Interface
 */
 private List<Seat> seatList = new ArrayList<>();
  //private List<Seat> seatList = new LinkedList<>();
-/*
-    Set interface
- Notice that when using the HashSet we get the elements in a different order
-    private Collection<Seat> seatList = new HashSet<>();
- Notice that when using the LinkedHashSet we get the elements in correct order
-private Collection<Seat> seatList = new LinkedHashSet<>();
-*/
+    /**
+     *Set interface
+     * Notice that when using the HashSet we get the elements in a different order
+     * private Collection<Seat> seatList = new HashSet<>();
+     * Notice that when using the LinkedHashSet we get the elements in correct order
+     * private Collection<Seat> seatList = new LinkedHashSet<>();
+     * */
 
 
     public Theatre(String theatreName, int numRows, int numColumns) {
@@ -182,7 +184,9 @@ private Collection<Seat> seatList = new LinkedHashSet<>();
 
 
 
-    //Notice that T element implements the Comparable<T> interface
+/**
+ *Notice that T element implements the Comparable<T> interface
+ */
     class Seat implements Comparable<Seat>{
         private final String identifier;
         private double price;

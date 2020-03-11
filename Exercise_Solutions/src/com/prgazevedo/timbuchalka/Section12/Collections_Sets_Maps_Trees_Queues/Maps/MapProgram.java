@@ -12,7 +12,9 @@ public class MapProgram {
         languages.put("3-BASIC", "Beginners All purposes Symbolic intruction code");
         languages.put("4-ALGOL","Algorithmic language");
 
-        //Notice that put returns previous value
+        /**
+         *Notice that put returns previous value
+         */
         System.out.println(languages.put("1-Java","A cup of coffee" ));
         if(languages.containsKey("Java")){
             System.out.println("Java in the map");
@@ -45,7 +47,9 @@ public class MapProgram {
     }
     public static void printMap(){
         //print out keyset and values
-        //notice that there is not assurance of order
+        /**
+         *notice that there is not assurance of order
+         */
         System.out.println("KeySet -> Value");
         System.out.println("=====================================================");
         for (String s:languages.keySet())

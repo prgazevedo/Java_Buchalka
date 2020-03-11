@@ -2,7 +2,9 @@ package com.prgazevedo.timbuchalka.Section11.Packages_Scope_Initializers.AccessM
 
 //Identify the accessibility
 
-//default is package-private: accessible to members of package and subclasses
+/**
+ *default is package-private: accessible to members of package and subclasses
+ */
 interface Accessible {
 
     int SOME_CONSTANT = 100; // public static final: like all member variables of interfaces!

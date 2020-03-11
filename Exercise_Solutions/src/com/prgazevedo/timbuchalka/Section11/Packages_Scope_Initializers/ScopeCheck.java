@@ -39,7 +39,10 @@ public class ScopeCheck {
         }
 
         public void printInnerSum(int maxNumber){
-            //notice the use of outer class private variable
+            /**
+             * notice the use of outer class private variable
+             */
+
             System.out.println(separator);
             for (int i = 1; i < maxNumber; i++) {
                 System.out.println("Sum of: "+i+" with inner factor: "+this.Factor +" has value:" +(this.Factor+i));

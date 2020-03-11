@@ -41,7 +41,7 @@ public class Main {
         sellItem(myBasket,"star",1);
         sellItem(myBasket,"toy car",1);
         sellItem(myBasket,"vase",10);
-
+        sellItem(myBasket,"bread",2);
         System.out.println(myBasket);
 
 

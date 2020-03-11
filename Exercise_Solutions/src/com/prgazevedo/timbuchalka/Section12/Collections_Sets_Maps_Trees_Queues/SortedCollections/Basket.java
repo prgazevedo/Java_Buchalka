@@ -1,9 +1,6 @@
 package com.prgazevedo.timbuchalka.Section12.Collections_Sets_Maps_Trees_Queues.SortedCollections;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class Basket {
     private final String name;
@@ -11,7 +8,7 @@ public class Basket {
 
     public Basket(String name) {
         this.name = name;
-        this.basket = new HashMap<>();
+        this.basket = new TreeMap<>();
     }
 
     public int addToBasket(StockItem stockItem, int quantity){
@@ -22,7 +19,10 @@ public class Basket {
         }
         return 0;
     }
-
+/**
+* Notice that it is only the collection that is unmodifiable
+ * The caller can still change the individual elements
+ */
     public Map<StockItem,Integer> Items(){
         return Collections.unmodifiableMap(basket);
     }
@@ -32,10 +32,10 @@ public class Basket {
         String toReturn = "Shopping basket has"+basket.size() + " items \n";
         double totalBasketValue = 0;
         for (StockItem si:basket.keySet()){
-            toReturn+=("Item:"+si.getName()+"Price:"+si.getPrice()+" Quantity:"+(basket.get(si))+"\n");
-            totalBasketValue+=(si.getPrice()*si.getQuantity());
+            toReturn+=("Item:"+si.getName()+" Price:"+si.getPrice()+" Quantity:"+(basket.get(si))+"\n");
+            totalBasketValue+= si.getPrice()*si.getQuantity();
         }
-        toReturn+=("Total basket value:"+totalBasketValue);
+        toReturn+=("Total basket value:"+String.format("%1$.1f",totalBasketValue));
         return toReturn;
     }
 }

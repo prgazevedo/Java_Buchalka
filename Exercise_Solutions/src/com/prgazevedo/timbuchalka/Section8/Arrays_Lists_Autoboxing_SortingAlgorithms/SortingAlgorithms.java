@@ -21,7 +21,9 @@ public class SortingAlgorithms {
         }
     }
 
-    //bubble sort --> the simplest sorting algorithm
+/**
+ *bubble sort --> the simplest sorting algorithm
+ */
     public static int[] bubbleSortArray(int arraySize, int[] inputArray){
         // Has O(n^2) but is worse than insertion sort
         System.out.println("Sorting using bubble sort algorithm");
@@ -53,7 +55,9 @@ public class SortingAlgorithms {
         return list;
     }
 
-    //bubble sort --> the simplest sorting algorithm --> Using the Collections
+/**
+ *bubble sort --> the simplest sorting algorithm --> Using the Collections
+ */
     public static List<? extends Comparable> bubbleSortList(List<? extends Comparable> list){
         // Has O(n^2) but is worse than insertion sort
         System.out.println("Sorting using bubble sort list algorithm");
@@ -74,13 +78,15 @@ public class SortingAlgorithms {
 
 
 
-    //insertion sort
+    /**
+     *insertion sort --> not efficient for large sets but recognizes if the data is already sorted!
+     * "quick and dirty approach" O(n^2)
+     * performs more swaps (watch out for large items) and less comparisons
+     * plus: does not use extra storage
+     * https://www.youtube.com/watch?v=i-SKeOcBwko
+     */
     public static int[] insertionSortArray(int arraySize, int[] inputArray) {
-        //insertion sort --> not efficient for large sets but recognizes if the data is already sorted!
-        //"quick and dirty approach" O(n^2)
-        // performs more swaps (watch out for large items) and less comparisons
-        // plus: does not use extra storage
-        //https://www.youtube.com/watch?v=i-SKeOcBwko
+
         System.out.println("Sorting using insert sort algorithm");
         printArray("UnSorted array is:", inputArray);
         for(int i=1;i<arraySize;i++){
@@ -97,12 +103,14 @@ public class SortingAlgorithms {
         return inputArray;
     }
 
-    //selection sort
+    /**
+     *selection sort --> not efficient for large data set (worse earlier than insertion sort for larger data)
+     * "quick and dirty approach" O(n^2)
+     * performs more comparisons (watch out for long comparisons) and less swaps
+     * plus: does not use extra storage
+     */
     public static int[] selectionSortArray(int arraySize, int[] inputArray) {
-        //selection sort --> not efficient for large data set (worse earlier than insertion sort for larger data)
-        //"quick and dirty approach" O(n^2)
-        // performs more comparisons (watch out for long comparisons) and less swaps
-        // plus: does not use extra storage
+
         System.out.println("Sorting using selection sort algorithm");
         printArray("UnSorted array is:", inputArray);
 
@@ -131,12 +139,14 @@ public class SortingAlgorithms {
 
 
 
-    //merge sort
+    /**
+     *merge sort --> recursive algorithm
+     * "more efficient approach" O(n*logN)
+     * minus: uses extra storage
+     * blatant copy from: https://codereview.stackexchange.com/questions/122697/simple-java-mergesort-implementation
+     */
     public static int[] mergeSortArray(int arraySize, int[] inputArray) {
-        //merge sort --> recursive algorithm
-        //"more efficient approach" O(n*logN)
-        // minus: uses extra storage
-        // blatant copy from: https://codereview.stackexchange.com/questions/122697/simple-java-mergesort-implementation
+
         System.out.println("Sorting using merge sort algorithm");
         printArray("UnSorted array is:", inputArray);
         inputArray= mergeSort(inputArray);
