@@ -42,19 +42,21 @@ public class Main {
         sellItem(myBasket,"toy car",1);
         sellItem(myBasket,"vase",10);
         sellItem(myBasket,"bread",2);
+        sellItem(myBasket,"bread",20);
+        sellItem(myBasket,"bread",120);
         System.out.println(myBasket);
-
-
         System.out.println(stockList);
+        System.out.println("Checkout basket");
+        myBasket.checkoutBasket();
 
     }
 
     public static int sellItem(Basket basket,String itemName,int quantity) {
         if(basket!=null && quantity>0){
             StockItem stockItem = stockList.getItem(itemName);
-            if(stockItem== null) System.out.println("That item is not for sale");
+            if(stockItem== null) System.out.println("That item: "+itemName+" is not for sale");
             else{
-                if(stockList.sellStock(itemName,quantity)!=0){
+                if(stockList.checkStock(itemName,quantity)!=0){
                     basket.addToBasket(stockItem,quantity);
                     System.out.println(itemName+" was added to basket.");
                 }

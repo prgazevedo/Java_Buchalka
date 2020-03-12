@@ -11,11 +11,19 @@ public class StockItem implements Comparable<StockItem>{
     private final String name;
     private double price;
     private int quantity=0;
+    private int reservedQuantity;
+
+    public int getReservedQuantity() {
+        return reservedQuantity;
+    }
+
+
 
     public StockItem(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.reservedQuantity=0;
     }
 
     public String getName() {
@@ -38,9 +46,33 @@ public class StockItem implements Comparable<StockItem>{
         if(quantity>0.0) this.quantity = quantity;
     }
 
-    public void adjustStock(int stockChange){
+    public boolean setReservedQuantity(int reservation){
+        if(reservation>0){
+            //check that enough stock exists
+            if(quantity-reservedQuantity-reservation>0){
+                reservedQuantity+=reservation;
+                System.out.println("Item: "+ name+ " was reserved: "+reservation+ " total reservation: "+reservedQuantity);
+                return true;
+            }else{
+                System.out.println("Sorry not enough stock to make reservation.\n Stock: "+quantity+" Already reserved: "+reservedQuantity+ " This reservation: "+reservation );
+                return false;
+            }
+        }else if(reservedQuantity+reservation>=0){
+            reservedQuantity+=reservation;
+            System.out.println("Reservation was released. Current reserved quantity is: "+reservedQuantity);
+            return true;
+        }
+        return false;
+    }
+
+    //stock change might be negative
+    public boolean adjustStock(int stockChange){
         int newQuantity = quantity+stockChange;
-        if(newQuantity>0) quantity=newQuantity;
+        if(newQuantity>0){
+            quantity=newQuantity;
+            return true;
+        }
+        return false;
     }
 
     @Override

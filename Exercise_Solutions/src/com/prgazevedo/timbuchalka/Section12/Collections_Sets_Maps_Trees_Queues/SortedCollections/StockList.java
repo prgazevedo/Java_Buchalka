@@ -28,11 +28,19 @@ public class StockList {
         return 0;
     }
 
-    public int sellStock(String itemName, int quantity){
+    public int checkStock(String itemName, int quantity){
+        System.out.println("checkStock for: "+itemName+" for quantity: "+quantity);
        StockItem stockItem =  stockList.getOrDefault(itemName,null);
         if(stockItem!=null && stockItem.getQuantity()>=quantity && quantity>0){
-            stockItem.adjustStock(-quantity);
-            return quantity;
+            if(stockItem.setReservedQuantity(quantity)) {
+                System.out.println("checkStock OK");
+                return quantity;
+            }
+            else {
+                System.out.println("checkStock not enough");
+                return 0;
+            }
+            //stockItem.adjustStock(-quantity);
         }
         return 0;
     }
