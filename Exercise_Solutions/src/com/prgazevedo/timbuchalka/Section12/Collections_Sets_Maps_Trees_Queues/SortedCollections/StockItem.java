@@ -7,7 +7,7 @@ import java.util.Objects;
  *this is used for the treemap (compareTo is called) to order the collection
  *in comparison with the HashMap that return scrambled entries
  */
-public class StockItem implements Comparable<StockItem>{
+public class StockItem implements Comparable<StockItem>, Cloneable {
     private final String name;
     private double price;
     private int quantity=0;
@@ -17,7 +17,10 @@ public class StockItem implements Comparable<StockItem>{
         return reservedQuantity;
     }
 
-
+    @Override
+    protected StockItem clone() throws CloneNotSupportedException {
+        return (StockItem) super.clone();
+    }
 
     public StockItem(String name, double price, int quantity) {
         this.name = name;
@@ -49,7 +52,7 @@ public class StockItem implements Comparable<StockItem>{
     public boolean setReservedQuantity(int reservation){
         if(reservation>0){
             //check that enough stock exists
-            if(quantity-reservedQuantity-reservation>0){
+            if(quantity-reservedQuantity-reservation>=0){
                 reservedQuantity+=reservation;
                 System.out.println("Item: "+ name+ " was reserved: "+reservation+ " total reservation: "+reservedQuantity);
                 return true;
@@ -68,7 +71,7 @@ public class StockItem implements Comparable<StockItem>{
     //stock change might be negative
     public boolean adjustStock(int stockChange){
         int newQuantity = quantity+stockChange;
-        if(newQuantity>0){
+        if(newQuantity>=0){
             quantity=newQuantity;
             return true;
         }

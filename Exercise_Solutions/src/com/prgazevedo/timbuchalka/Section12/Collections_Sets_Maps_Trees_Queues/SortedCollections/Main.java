@@ -1,8 +1,12 @@
 package com.prgazevedo.timbuchalka.Section12.Collections_Sets_Maps_Trees_Queues.SortedCollections;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     private static StockList stockList = new StockList();
-    public static void main(String[] args) {
+    private static List<Basket> basketList = new ArrayList<>();
+    public static void main(String[] args) throws CloneNotSupportedException {
         StockItem temp = new StockItem("bread", 0.86, 100);
         stockList.addStock(temp);
 
@@ -33,11 +37,11 @@ public class Main {
         temp = new StockItem("vase", 8.76, 40);
         stockList.addStock(temp);
 
-
+        System.out.println("Initial Stock List");
         System.out.println(stockList);
 
         System.out.println("Basket");
-        Basket myBasket = new Basket("My Basket");
+        Basket myBasket = new Basket("My Basket#1");
         sellItem(myBasket,"star",1);
         sellItem(myBasket,"toy car",1);
         sellItem(myBasket,"vase",10);
@@ -45,10 +49,26 @@ public class Main {
         sellItem(myBasket,"bread",20);
         sellItem(myBasket,"bread",120);
         System.out.println(myBasket);
+        System.out.println("Intermediate Stock List");
         System.out.println(stockList);
         System.out.println("Checkout basket");
-        myBasket.checkoutBasket();
-
+        basketList.add( myBasket.checkoutBasket());
+        Basket myBasket2 = new Basket("My Basket#2");
+        sellItem(myBasket2,"phone",1);
+        sellItem(myBasket2,"towel",1);
+        sellItem(myBasket2,"vase",10);
+        sellItem(myBasket2,"juice",2);
+        sellItem(myBasket2,"bread",20);
+        sellItem(myBasket2,"chair",10);
+        System.out.println("Checkout basket");
+        basketList.add( myBasket2.checkoutBasket());
+        System.out.println("Final Stock List");
+        System.out.println(stockList);
+        System.out.println("==========================================================");
+        System.out.println("List of purchased baskets is:");
+        for (Basket b:basketList){
+            System.out.println(b);
+        }
     }
 
     public static int sellItem(Basket basket,String itemName,int quantity) {
