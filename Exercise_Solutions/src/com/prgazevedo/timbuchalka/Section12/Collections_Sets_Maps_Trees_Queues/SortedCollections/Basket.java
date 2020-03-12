@@ -16,9 +16,39 @@ public class Basket {
         this.basketList = basketList;
     }
 
+
+    public int checkInBasket(StockItem stockItem){
+        if(stockItem!=null ){
+            return basketList.getOrDefault(stockItem,0);
+        } else return 0;
+    }
+
+    /**
+     * Remove the item quantity from the basket
+     * @param stockItem
+     * @param quantity
+     * @return Returns the remaining stock in basket
+     */
+    public int removeFromBasket(StockItem stockItem, int quantity){
+        int currentQuantity=0;
+        if((currentQuantity=checkInBasket(stockItem))>0){
+            int remainingQuantity=currentQuantity-quantity;
+            if(remainingQuantity==0){
+                basketList.remove(stockItem);
+            } else if(remainingQuantity>0){
+                basketList.put(stockItem,remainingQuantity);
+            } else if(remainingQuantity<0){
+                System.out.println("Cannot remove from basket more that was reserved --> Did not remove item from basket");
+            }
+            return remainingQuantity;
+        }
+        System.out.println("Not in basket to remove");
+        return 0;
+    }
+
     public int addToBasket(StockItem stockItem, int quantity){
-        if(stockItem!=null && quantity>0){
-            int currentQuantity =  basketList.getOrDefault(stockItem,0);
+        int currentQuantity=0;
+        if((currentQuantity=checkInBasket(stockItem))>=0){
             basketList.put(stockItem,quantity+currentQuantity);
             return currentQuantity;
         } else System.out.println("Not added to basket");

@@ -49,6 +49,11 @@ public class StockItem implements Comparable<StockItem>, Cloneable {
         if(quantity>0.0) this.quantity = quantity;
     }
 
+    /**
+     * Change the reserved quantity - notice that reservation might be negative
+     * @param reservation
+     * @return
+     */
     public boolean setReservedQuantity(int reservation){
         if(reservation>0){
             //check that enough stock exists

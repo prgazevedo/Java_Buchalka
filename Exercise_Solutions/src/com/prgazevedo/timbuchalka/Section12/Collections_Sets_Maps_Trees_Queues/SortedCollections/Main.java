@@ -39,27 +39,31 @@ public class Main {
 
         System.out.println("Initial Stock List");
         System.out.println(stockList);
-
+        System.out.println("==========================================================");
         System.out.println("Basket");
         Basket myBasket = new Basket("My Basket#1");
-        sellItem(myBasket,"star",1);
-        sellItem(myBasket,"toy car",1);
-        sellItem(myBasket,"vase",10);
-        sellItem(myBasket,"bread",2);
-        sellItem(myBasket,"bread",20);
-        sellItem(myBasket,"bread",120);
+        reserveItem(myBasket,"star",1);
+        reserveItem(myBasket,"toy car",1);
+        reserveItem(myBasket,"vase",10);
+        reserveItem(myBasket,"bread",2);
+        reserveItem(myBasket,"bread",20);
+        unReserveItem(myBasket,"bread",22);
+        reserveItem(myBasket,"bread",120);
         System.out.println(myBasket);
         System.out.println("Intermediate Stock List");
         System.out.println(stockList);
+        System.out.println("==========================================================");
         System.out.println("Checkout basket");
         basketList.add( myBasket.checkoutBasket());
         Basket myBasket2 = new Basket("My Basket#2");
-        sellItem(myBasket2,"phone",1);
-        sellItem(myBasket2,"towel",1);
-        sellItem(myBasket2,"vase",10);
-        sellItem(myBasket2,"juice",2);
-        sellItem(myBasket2,"bread",20);
-        sellItem(myBasket2,"chair",10);
+        reserveItem(myBasket2,"phone",1);
+        reserveItem(myBasket2,"towel",1);
+        reserveItem(myBasket2,"vase",10);
+        reserveItem(myBasket2,"juice",2);
+        reserveItem(myBasket2,"bread",20);
+        unReserveItem(myBasket2,"bread",10);
+        reserveItem(myBasket2,"chair",10);
+        System.out.println("==========================================================");
         System.out.println("Checkout basket");
         basketList.add( myBasket2.checkoutBasket());
         System.out.println("Final Stock List");
@@ -71,7 +75,7 @@ public class Main {
         }
     }
 
-    public static int sellItem(Basket basket,String itemName,int quantity) {
+    public static int reserveItem(Basket basket, String itemName, int quantity) {
         if(basket!=null && quantity>0){
             StockItem stockItem = stockList.getItem(itemName);
             if(stockItem== null) System.out.println("That item: "+itemName+" is not for sale");
@@ -79,6 +83,31 @@ public class Main {
                 if(stockList.checkStock(itemName,quantity)!=0){
                     basket.addToBasket(stockItem,quantity);
                     System.out.println(itemName+" was added to basket.");
+                }
+                else System.out.println("No stock!");
+
+            }
+        }
+        return 0;
+
+    }
+
+    public static int unReserveItem(Basket basket, String itemName, int quantity) {
+        if(basket!=null && quantity>0){
+
+            StockItem stockItem = stockList.getItem(itemName);
+            if(stockItem== null) System.out.println("That item: "+itemName+" does not exist");
+            else{
+                if(basket.checkInBasket(stockItem)!=0){
+                    int remainingQuantity=0;
+                    if( (remainingQuantity = basket.removeFromBasket(stockItem,quantity))>=0){
+                        if(stockItem.setReservedQuantity(-quantity)){
+                            System.out.println(itemName+" with quantity: "+quantity +" was removed from basket.");
+                            System.out.println(itemName+" has remaining quantity: "+remainingQuantity +" in the basket.");
+                        }
+
+                    };
+
                 }
                 else System.out.println("No stock!");
 
